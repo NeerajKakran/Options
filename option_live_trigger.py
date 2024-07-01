@@ -1,6 +1,6 @@
-import kiteapp as kt
+# import kiteapp as kt
 import pandas as pd
-import talib
+# import talib
 import os
 import requests
 import pandas_ta as ta
@@ -104,8 +104,10 @@ for scrip, name in zip(scrips, NSE_name):
                 df['option_type'] = df['instrument'].str[-2:]
                 df['strike_price'] = df['instrument'].str[-7:-2].astype('int')
                 df['expiry_date'] = min_expiry
-                df['EMA_8'] = talib.EMA(df['close'], timeperiod=8)
-                df['EMA_20'] = talib.EMA(df['close'], timeperiod=20)
+                # df['EMA_8'] = talib.EMA(df['close'], timeperiod=8)
+                df['EMA_8'] = ta.ema(df['close'], length=8)
+                # df['EMA_20'] = talib.EMA(df['close'], timeperiod=20)
+                df['EMA_20'] = ta.ema(df['close'], length=20)
                 df.set_index('datetime', inplace=True)
                 df['VWAP'] = round(ta.vwap(high=df['high'], low=df['low'], close=df['close'], volume=df['volume']), 2)
                 df.reset_index(inplace=True)
