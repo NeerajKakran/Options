@@ -9,9 +9,7 @@ from datetime import datetime, timedelta
 from kiteconnect import KiteConnect
 
 with open(r'D:\zerodha_data\access token.txt', 'r') as wr:
-    token = wr.read()
-    
-api_key = 'g0inasdoj9nit657'
+    toke
 kite = KiteConnect(api_key=api_key)
 access_token=token
 kite.set_access_token(access_token)
